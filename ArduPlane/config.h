@@ -275,6 +275,13 @@
 //////////////////////////////////////////////////////////////////////////////
 // FLY_BY_WIRE_B airspeed control
 //
+#ifndef AIRSPEED_FBW_MIN
+ # define AIRSPEED_FBW_MIN               9
+#endif
+#ifndef AIRSPEED_FBW_MAX
+ # define AIRSPEED_FBW_MAX               22
+#endif
+
 #ifndef ALT_HOLD_FBW
  # define ALT_HOLD_FBW 0
 #endif
@@ -396,11 +403,6 @@
 // fence breach)
 #ifndef RESET_SWITCH_CHAN_PWM
  # define RESET_SWITCH_CHAN_PWM 1750
-#endif
-
-// OBC Failsafe enable
-#ifndef OBC_FAILSAFE
-#define OBC_FAILSAFE ENABLED
 #endif
 
 #define HIL_SUPPORT ENABLED
