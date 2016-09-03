@@ -449,6 +449,7 @@ bool QuadPlane::setup(void)
     motors->set_interlock(true);
     pid_accel_z.set_dt(loop_delta_t);
     pos_control->set_dt(loop_delta_t);
+    attitude_control->parameter_sanity_check();
 
     // setup the trim of any motors used by AP_Motors so px4io
     // failsafe will disable motors
@@ -1753,6 +1754,7 @@ bool QuadPlane::verify_vtol_takeoff(const AP_Mission::Mission_Command &cmd)
     }
     transition_state = TRANSITION_AIRSPEED_WAIT;
     plane.TECS_controller.set_pitch_max_limit(transition_pitch_max);
+    pos_control->set_alt_target(inertial_nav.get_altitude());
 
     plane.complete_auto_takeoff();
     
